@@ -1,23 +1,27 @@
-def get_discount(price):
-    if price >= 10000:
-        return "20%"
-    elif price >= 5000:
-        return "15%"
-    elif price >= 2000:
-        return "10%"
+def check_password_strength(password):
+    if len(password) < 8:
+        return "Weak Password"
+
+    has_upper = False
+    has_lower = False
+    has_digit = False
+
+    for ch in password:
+        if ch.isupper():
+            has_upper = True
+        elif ch.islower():
+            has_lower = True
+        elif ch.isdigit():
+            has_digit = True
+
+    if has_upper and has_lower and has_digit:
+        return "Strong Password"
     else:
-        return "5%"
+        return "Weak Password"
 
 
-# Main program
-product_name = input("Enter product name: ")
-product_id = input("Enter product ID: ")
-price = float(input("Enter product price: "))
+if __name__ == "__main__":
+    # Sample input
+    password = "Amrutha123"
 
-discount = get_discount(price)
-
-print("\n--- Product Details ---")
-print("Product Name:", product_name)
-print("Product ID:", product_id)
-print("Price:", price)
-print("Discount Category:", discount)
+    print(check_password_strength(password))
